@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PodStream</title>
+
+    <!-- Tailwind CLI Output CSS -->
+    <link rel="stylesheet" href="./output/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+  </head>
+
+  <body class="bg-[#F5F5F5] font-sans">
+    <!-- ================= NAVBAR START ================= -->
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-lg">
+      <div class="max-w-[1320px] mx-auto px-6 py-6">
+        <nav class="flex items-center justify-between relative">
+          <!-- LOGO -->
+
+          <a href="categories.html" class="text-2xl font-semibold text-black">
+            PodStream
+          </a>
+
+          <!-- NAVIGATION LINKS -->
+
+          <ul
+            class="hidden lg:flex items-center gap-10 text-gray-600 font-medium"
+          >
+            <li>
+              <a href="index.html" class="hover:text-black"> Home </a>
+            </li>
+
+            <li>
+              <a href="categories.html" class="hover:text-black"> Categories</a>
+            </li>
+
+            <li>
+              <a href="subscriptions.html" class="hover:text-black">Subscriptions</a>
+            </li>
+
+            <li>
+              <a
+                href="library.html"
+                class="text-black border-b-2 border-black pb-1"
+                >Library</a
+              >
+            </li>
+
+            <li>
+              <a href="profile.html" class="hover:text-black"> Profile </a>
+            </li>
+          </ul>
+
+          <!-- RIGHT SIDE ICONS -->
+
+          <div class="hidden lg:flex items-center gap-6">
+            <div class="relative">
+              <!-- SEARCH ICON -->
+
+              <button id="searchToggle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+
+              <!-- SEARCH INPUT PANEL -->
+
+              <div
+                id="searchBox"
+                class="absolute right-0 top-[48px] w-[0px] overflow-hidden opacity-0 transition-all duration-300"
+              >
+                <input
+                  type="text"
+                  placeholder="Search podcasts..."
+                  class="w-[260px] px-4 py-2 rounded-full border border-gray-200 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)] outline-none"
+                />
+              </div>
+            </div>
+            <!-- SUBSCRIBE BUTTON -->
+
+            <a
+              href="subscriptions.html"
+              class="bg-black text-white px-6 py-2 rounded-full"
+            >
+              Subscribe now
+            </a>
+          </div>
+
+          <!-- MOBILE MENU ICON -->
+
+          <button
+            id="psMenuToggle"
+            class="lg:hidden flex flex-col justify-center items-center w-8 h-8 relative"
+          >
+            <span
+              class="ps-menu-line absolute w-6 h-[2px] bg-black transition duration-300 -translate-y-2"
+            ></span>
+
+            <span
+              class="ps-menu-line absolute w-6 h-[2px] bg-black transition duration-300"
+            ></span>
+
+            <span
+              class="ps-menu-line absolute w-6 h-[2px] bg-black transition duration-300 translate-y-2"
+            ></span>
+          </button>
+        </nav>
+
+        <!-- MOBILE MENU PANEL -->
+
+        <div
+          id="psMobileMenu"
+          class="lg:hidden absolute top-full left-0 w-full bg-white shadow-md opacity-0 pointer-events-none -translate-y-2 transition duration-300"
+        >
+          <div class="flex flex-col px-6 py-6 gap-4 text-gray-700">
+            <!-- MOBILE SEARCH -->
+
+            <div>
+              <button
+                id="mobileSearchToggle"
+                class="flex items-center gap-2 text-black"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+
+                Search
+              </button>
+
+              <div
+                id="mobileSearchBox"
+                class="mt-3 max-h-0 opacity-0 overflow-hidden transition-all duration-300"
+              >
+                <input
+                  type="text"
+                  placeholder="Search podcasts..."
+                  class="w-full px-4 py-2 rounded-full border border-gray-200 bg-white shadow-md outline-none"
+                />
+              </div>
+            </div>
+            <a href="index.html">Home</a>
+
+            <a href="categories.html">Categories</a>
+
+            <a href="subscriptions.html">Subscriptions</a>
+
+            <a href="library.html">Library</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a
+              href="subscriptions.html"
+              class="mt-2 bg-black text-white px-5 py-2 rounded-full w-fit"
+            >
+              Subscribe now
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= LIBRARY START ================= -->
+
+    <section
+      class="relative bg-cover bg-right bg-no-repeat min-h-[520px] lg:min-h-[620px] flex items-center pt-[100px]"
+      style="background-image: url(&quot;./assets/4banner.png&quot;)"
+    >
+      <!-- CONTENT CONTAINER -->
+
+      <div class="relative max-w-[1320px] mx-auto px-6 w-full">
+        <div class="max-w-[650px]">
+          <!-- TITLE -->
+
+          <h1
+            class="text-[40px] sm:text-[48px] lg:text-[64px] font-semibold leading-tight text-[#1A1A1A]"
+          >
+            The Library.
+            <br />
+            Your Way.
+          </h1>
+
+          <!-- DESCRIPTION -->
+
+          <p
+            class="text-[#1A1A1A] mt-6 max-w-[480px] text-[15px] sm:text-[16px] leading-[26px]"
+          >
+            Every episode you love, every show you follow — organised, saved,
+            and ready to play.
+          </p>
+
+          <!-- BUTTON -->
+
+          <div class="mt-8">
+            <a
+              href="./subscriptions.html"
+              class="inline-block bg-black text-white px-8 py-3 rounded-full transition hover:scale-105 hover:shadow-lg"
+            >
+              Subscribe now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTINUE LISTENING START ================= -->
+
+    <section class="bg-[#F5F5F5] py-[60px] sm:py-[80px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- HEADER -->
+
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-[40px]"
+        >
+          <h2 class="text-[24px] sm:text-[30px] font-semibold text-[#1A1A1A]">
+            Continue Listening
+          </h2>
+
+          <a
+            href="#"
+            class="text-[14px] text-gray-500 flex items-center gap-2 hover:text-black transition"
+          >
+            View all episodes →
+          </a>
+        </div>
+
+        <!-- CARD GRID -->
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] lg:gap-[32px]"
+        >
+          <!-- CARD -->
+
+          <div
+            class="bg-white rounded-[16px] overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-[4px] transition duration-300"
+          >
+            <!-- IMAGE -->
+
+            <div class="relative">
+              <img
+                src="./assets/history.png"
+                class="w-full h-[200px] sm:h-[220px] object-cover"
+              />
+
+              <!-- SVG PLUS BUTTON -->
+
+              <button
+                class="absolute top-[12px] right-[12px] hover:scale-105 transition"
+              >
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 52 52"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="52" height="52" rx="4" fill="white" />
+
+                  <path
+                    d="M20 26H26M26 26H32M26 26V20M26 26V32"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <!-- CONTENT -->
+
+            <div class="p-[18px] sm:p-[20px]">
+              <h3 class="text-[16px] font-semibold text-[#1A1A1A]">History</h3>
+
+              <p class="text-[13px] text-gray-400 mt-[4px]">Episode 12</p>
+
+              <!-- RESUME BUTTON -->
+
+              <button
+                class="mt-[16px] w-full bg-black text-white py-[10px] rounded-[8px] flex items-center justify-center gap-2 hover:opacity-90 transition"
+              >
+                <img src="./assets/play-listen.png" class="w-[14px]" />
+
+                Resume
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+
+          <div
+            class="bg-white rounded-[16px] overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-[4px] transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="./assets/philophy.png"
+                class="w-full h-[200px] sm:h-[220px] object-cover"
+              />
+
+              <button
+                class="absolute top-[12px] right-[12px] hover:scale-105 transition"
+              >
+                <svg width="40" height="40" viewBox="0 0 52 52">
+                  <rect width="52" height="52" rx="4" fill="white" />
+
+                  <path
+                    d="M20 26H26M26 26H32M26 26V20M26 26V32"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="p-[18px] sm:p-[20px]">
+              <h3 class="text-[16px] font-semibold text-[#1A1A1A]">
+                Philosophy
+              </h3>
+
+              <p class="text-[13px] text-gray-400 mt-[4px]">Episode 4</p>
+
+              <button
+                class="mt-[16px] w-full bg-black text-white py-[10px] rounded-[8px] flex items-center justify-center gap-2 hover:opacity-90 transition"
+              >
+                <img src="./assets/play-listen.png" class="w-[14px]" />
+
+                Resume
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+
+          <div
+            class="bg-white rounded-[16px] overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-[4px] transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="./assets/education.png"
+                class="w-full h-[200px] sm:h-[220px] object-cover"
+              />
+
+              <button
+                class="absolute top-[12px] right-[12px] hover:scale-105 transition"
+              >
+                <svg width="40" height="40" viewBox="0 0 52 52">
+                  <rect width="52" height="52" rx="4" fill="white" />
+
+                  <path
+                    d="M20 26H26M26 26H32M26 26V20M26 26V32"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="p-[18px] sm:p-[20px]">
+              <h3 class="text-[16px] font-semibold text-[#1A1A1A]">
+                Education
+              </h3>
+
+              <p class="text-[13px] text-gray-400 mt-[4px]">Episode 8</p>
+
+              <button
+                class="mt-[16px] w-full bg-black text-white py-[10px] rounded-[8px] flex items-center justify-center gap-2 hover:opacity-90 transition"
+              >
+                <img src="./assets/play-listen.png" class="w-[14px]" />
+
+                Resume
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= YOUR DOWNLOADS START ================= -->
+
+    <section class="bg-[#F5F5F5] pb-[100px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- HEADER -->
+
+        <div class="flex items-center justify-between mb-[40px]">
+          <h2 class="text-[28px] sm:text-[32px] font-semibold text-[#1A1A1A]">
+            Your Downloads
+          </h2>
+
+          <a
+            href="#"
+            class="text-[14px] text-gray-500 flex items-center gap-2 hover:text-black transition group"
+          >
+            View all
+
+            <img
+              src="./assets/arrow.png"
+              class="w-[14px] transition-transform duration-300 group-hover:translate-x-[4px]"
+            />
+          </a>
+        </div>
+
+        <!-- EPISODE LIST -->
+
+        <div class="space-y-[24px]">
+          <!-- ITEM -->
+
+          <div
+            class="group flex flex-col sm:flex-row gap-[20px] cursor-pointer"
+          >
+            <!-- IMAGE -->
+
+            <div
+              class="relative w-full sm:w-[200px] h-[180px] sm:h-[147px] flex-shrink-0 overflow-hidden rounded-[12px]"
+            >
+              <img
+                src="./assets/top-ep1.png"
+                class="w-full h-full object-cover"
+              />
+
+              <!-- PLAY BUTTON -->
+
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="transition-transform duration-300 group-hover:scale-110"
+                >
+                  <svg
+                    class="w-[52px] sm:w-[60px] lg:w-[68px]"
+                    viewBox="0 0 68 68"
+                    fill="none"
+                  >
+                    <rect width="68" height="68" rx="34" fill="white" />
+
+                    <path d="M52 34L25 49.5885V18.4115L52 34Z" fill="black" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- TEXT -->
+
+            <div class="max-w-[720px]">
+              <p class="text-[12px] text-gray-400 mb-[6px]">5H AGO</p>
+
+              <h3 class="text-[18px] font-semibold text-[#1A1A1A]">
+                Trump Says He's Ready for Diplomacy. Iran? Not So Much.
+              </h3>
+
+              <p class="text-[14px] text-gray-400 mt-[8px] leading-[22px]">
+                Despite his threats of escalation, President Trump seems
+                increasingly determined to end the war in Iran through
+                negotiations.
+              </p>
+
+              <p class="text-[12px] text-gray-400 mt-[10px]">30 min</p>
+            </div>
+          </div>
+
+          <!-- ITEM 2 -->
+
+          <div
+            class="group flex flex-col sm:flex-row gap-[20px] cursor-pointer"
+          >
+            <div
+              class="relative w-full sm:w-[200px] h-[180px] sm:h-[147px] flex-shrink-0 overflow-hidden rounded-[12px]"
+            >
+              <img
+                src="./assets/top-ep2.png"
+                class="w-full h-full object-cover"
+              />
+
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="transition-transform duration-300 group-hover:scale-110"
+                >
+                  <svg
+                    class="w-[52px] sm:w-[60px] lg:w-[68px]"
+                    viewBox="0 0 68 68"
+                  >
+                    <rect width="68" height="68" rx="34" fill="white" />
+
+                    <path d="M52 34L25 49.5885V18.4115L52 34Z" fill="black" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="max-w-[720px]">
+              <p class="text-[12px] text-gray-400 mb-[6px]">2D AGO</p>
+
+              <h3 class="text-[18px] font-semibold text-[#1A1A1A]">
+                Lebanese Warfront, US Troops Deployed To Middle East, TSA and
+                Travel
+              </h3>
+
+              <p class="text-[14px] text-gray-400 mt-[8px] leading-[22px]">
+                Despite his threats of escalation, President Trump seems
+                increasingly determined to end the war in Iran through
+                negotiations.
+              </p>
+
+              <p class="text-[12px] text-gray-400 mt-[10px]">30 min</p>
+            </div>
+          </div>
+
+          <!-- ITEM 3 -->
+
+          <div
+            class="group flex flex-col sm:flex-row gap-[20px] cursor-pointer"
+          >
+            <div
+              class="relative w-full sm:w-[200px] h-[180px] sm:h-[147px] flex-shrink-0 overflow-hidden rounded-[12px]"
+            >
+              <img
+                src="./assets/top-ep3.png"
+                class="w-full h-full object-cover"
+              />
+
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="transition-transform duration-300 group-hover:scale-110"
+                >
+                  <svg
+                    class="w-[52px] sm:w-[60px] lg:w-[68px]"
+                    viewBox="0 0 68 68"
+                  >
+                    <rect width="68" height="68" rx="34" fill="white" />
+
+                    <path d="M52 34L25 49.5885V18.4115L52 34Z" fill="black" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="max-w-[720px]">
+              <p class="text-[12px] text-gray-400 mb-[6px]">5D AGO</p>
+
+              <h3 class="text-[18px] font-semibold text-[#1A1A1A]">
+                MYSTERIOUS DEATH OF: Joseph “Jo-Jo” King III
+              </h3>
+
+              <p class="text-[14px] text-gray-400 mt-[8px] leading-[22px]">
+                On Feb. 23, 2020, 6-year-old Joseph “Jo-Jo” King III was found
+                unresponsive at home.
+              </p>
+
+              <p class="text-[12px] text-gray-400 mt-[10px]">30 min</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SAVED PODCASTS START ================= -->
+
+    <section class="bg-[#F5F5F5] pb-[100px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- HEADER -->
+
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-[40px]"
+        >
+          <h2 class="text-[26px] sm:text-[32px] font-semibold text-[#1A1A1A]">
+            Saved Podcasts
+          </h2>
+
+          <a
+            href="#"
+            class="flex items-center gap-2 text-[14px] text-gray-500 hover:text-black transition group"
+          >
+            View all episodes
+
+            <img
+              src="./assets/arrow.png"
+              class="w-[14px] transition-transform duration-300 group-hover:translate-x-[4px]"
+            />
+          </a>
+        </div>
+
+        <!-- GRID -->
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] lg:gap-[32px]"
+        >
+          <!-- CARD 1 -->
+
+          <div class="group relative rounded-[18px] overflow-hidden">
+            <!-- IMAGE -->
+
+            <img
+              src="./assets/finance.png"
+              class="w-full h-[420px] sm:h-[520px] lg:h-[625px] object-cover"
+            />
+
+            <!-- GREY PANEL -->
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-sm px-[22px] py-[18px]"
+            >
+              <p class="text-[13px] text-gray-500">Episode 2 ~ Technology</p>
+
+              <h3 class="text-[18px] font-semibold text-[#1A1A1A] mt-[4px]">
+                Finance
+              </h3>
+
+              <!-- ACTION ROW -->
+
+              <div class="flex items-center justify-between mt-[14px]">
+                <!-- PLAY BUTTON -->
+
+                <button
+                  class="flex items-center gap-2 hover:opacity-80 transition"
+                >
+                  <img src="./assets/play.png" class="w-[26px]" />
+
+                  <span class="text-[14px] text-[#1A1A1A]"> Play </span>
+                </button>
+
+                <!-- SHARE BUTTON -->
+
+                <button
+                  class="flex items-center gap-2 hover:opacity-80 transition"
+                >
+                  <span class="text-[14px] text-[#1A1A1A]"> Share </span>
+
+                  <img src="./assets/share.png" class="w-[26px]" />
+                </button>
+              </div>
+            </div>
+
+            <!-- HOVER IMAGE TINT -->
+
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"
+            ></div>
+          </div>
+
+          <!-- CARD 2 -->
+
+          <div class="group relative rounded-[18px] overflow-hidden">
+            <img
+              src="./assets/economics.png"
+              class="w-full h-[420px] sm:h-[520px] lg:h-[625px] object-cover"
+            />
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-sm px-[22px] py-[18px]"
+            >
+              <p class="text-[13px] text-gray-500">Episode 2 ~ Technology</p>
+
+              <h3 class="text-[18px] font-semibold text-[#1A1A1A] mt-[4px]">
+                Economics
+              </h3>
+
+              <div class="flex items-center justify-between mt-[14px]">
+                <button
+                  class="flex items-center gap-2 hover:opacity-80 transition"
+                >
+                  <img src="./assets/play.png" class="w-[26px]" />
+
+                  <span class="text-[14px] text-[#1A1A1A]"> Play </span>
+                </button>
+
+                <button
+                  class="flex items-center gap-2 hover:opacity-80 transition"
+                >
+                  <span class="text-[14px] text-[#1A1A1A]"> Share </span>
+
+                  <img src="./assets/share.png" class="w-[26px]" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"
+            ></div>
+          </div>
+
+          <!-- CARD 3 -->
+
+          <div class="group relative rounded-[18px] overflow-hidden">
+            <img
+              src="./assets/marketing.png"
+              class="w-full h-[420px] sm:h-[520px] lg:h-[625px] object-cover"
+            />
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-sm px-[22px] py-[18px]"
+            >
+              <p class="text-[13px] text-gray-500">Episode 2 ~ Technology</p>
+
+              <h3 class="text-[18px] font-semibold text-[#1A1A1A] mt-[4px]">
+                Marketing
+              </h3>
+
+              <div class="flex items-center justify-between mt-[14px]">
+                <button
+                  class="flex items-center gap-2 hover:opacity-80 transition"
+                >
+                  <img src="./assets/play.png" class="w-[26px]" />
+
+                  <span class="text-[14px] text-[#1A1A1A]"> Play </span>
+                </button>
+
+                <button
+                  class="flex items-center gap-2 hover:opacity-80 transition"
+                >
+                  <span class="text-[14px] text-[#1A1A1A]"> Share </span>
+
+                  <img src="./assets/share.png" class="w-[26px]" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LISTENING HISTORY START ================= -->
+
+    <section class="bg-[#F5F5F5] pb-[80px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- HEADER -->
+
+        <div class="flex items-center justify-between mb-[32px]">
+          <h2 class="text-[26px] sm:text-[32px] font-semibold text-[#1A1A1A]">
+            Listening History
+          </h2>
+
+          <a
+            href="#"
+            class="flex items-center gap-2 text-[14px] text-gray-500 hover:text-black transition group"
+          >
+            View all
+
+            <img
+              src="./assets/arrow.png"
+              class="w-[14px] group-hover:translate-x-[4px] transition"
+            />
+          </a>
+        </div>
+
+        <!-- SCROLL -->
+
+        <div class="flex gap-[16px] overflow-x-auto scrollbar-hide pb-2">
+          <!-- CARD -->
+
+          <div
+            class="relative min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] group"
+          >
+            <img
+              src="./assets/top-ep1.png"
+              class="w-full h-[140px] sm:h-[160px] lg:h-[180px] object-cover rounded-[12px]"
+            />
+
+            <div
+              class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition duration-300"
+            >
+              <img
+                src="./assets/play1.png"
+                class="w-[54px] sm:w-[60px] lg:w-[72px]"
+              />
+            </div>
+          </div>
+
+          <!-- CARD -->
+
+          <div
+            class="relative min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] group"
+          >
+            <img
+              src="./assets/top-ep2.png"
+              class="w-full h-[140px] sm:h-[160px] lg:h-[180px] object-cover rounded-[12px]"
+            />
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img
+                src="./assets/play1.png"
+                class="w-[54px] sm:w-[60px] lg:w-[72px]"
+              />
+            </div>
+          </div>
+
+          <!-- CARD -->
+
+          <div
+            class="relative min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] group"
+          >
+            <img
+              src="./assets/top-ep3.png"
+              class="w-full h-[140px] sm:h-[160px] lg:h-[180px] object-cover rounded-[12px]"
+            />
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img
+                src="./assets/play1.png"
+                class="w-[54px] sm:w-[60px] lg:w-[72px]"
+              />
+            </div>
+          </div>
+
+          <!-- CARD -->
+
+          <div
+            class="relative min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] group"
+          >
+            <img
+              src="./assets/top-ep4.png"
+              class="w-full h-[140px] sm:h-[160px] lg:h-[180px] object-cover rounded-[12px]"
+            />
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img
+                src="./assets/play1.png"
+                class="w-[54px] sm:w-[60px] lg:w-[72px]"
+              />
+            </div>
+          </div>
+
+          <!-- CARD -->
+
+          <div
+            class="relative min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] group"
+          >
+            <img
+              src="./assets/top-ep5.png"
+              class="w-full h-[140px] sm:h-[160px] lg:h-[180px] object-cover rounded-[12px]"
+            />
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img
+                src="./assets/play1.png"
+                class="w-[54px] sm:w-[60px] lg:w-[72px]"
+              />
+            </div>
+          </div>
+
+          <!-- CARD -->
+
+          <div
+            class="relative min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] group"
+          >
+            <img
+              src="./assets/top-ep6.png"
+              class="w-full h-[140px] sm:h-[160px] lg:h-[180px] object-cover rounded-[12px]"
+            />
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img
+                src="./assets/play1.png"
+                class="w-[54px] sm:w-[60px] lg:w-[72px]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TOP 50 ON PODSTREAM START ================= -->
+
+    <section class="bg-[#F5F5F5] pb-[120px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+
+        <div class="flex items-center justify-between mb-[40px]">
+          <h2 class="text-[26px] sm:text-[32px] font-semibold text-[#1A1A1A]">
+            Top 50 on Podstream
+          </h2>
+
+          <a
+            href="#"
+            class="flex items-center gap-2 text-[14px] text-gray-500 hover:text-black transition group"
+          >
+            View all episodes
+
+            <img
+              src="./assets/arrow.png"
+              class="w-[14px] group-hover:translate-x-1 transition"
+            />
+          </a>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] lg:gap-[32px]"
+        >
+          <!-- CARD 1 -->
+
+          <div class="relative rounded-[18px] overflow-hidden group">
+            <img
+              src="./assets/podstream1.png"
+              class="w-full h-[420px] sm:h-[520px] lg:h-[625px] object-cover"
+            />
+
+            <!-- PLUS BUTTON -->
+
+            <button
+              class="absolute top-[18px] right-[18px] w-[36px] h-[36px] bg-white rounded-[6px] flex items-center justify-center shadow-sm hover:scale-105 transition"
+            >
+              <img src="./assets/plus1.png" class="w-[14px]" />
+            </button>
+
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-black px-[24px] py-[22px] flex flex-col justify-between h-[170px] sm:h-[206px]"
+            >
+              <div>
+                <p class="text-[13px] text-[#CECECE]">Episode 2 ~ Technology</p>
+
+                <h3 class="text-[18px] font-semibold text-white mt-[4px]">
+                  History
+                </h3>
+              </div>
+
+              <div class="flex items-center justify-between mt-[14px]">
+                <button class="flex items-center gap-[6px]">
+                  <img src="./assets/play.png" class="w-[22px]" />
+
+                  <span class="text-[14px] text-white"> Play </span>
+                </button>
+
+                <button class="flex items-center gap-[6px]">
+                  <span class="text-[14px] text-white"> Share </span>
+
+                  <img src="./assets/share.png" class="w-[22px]" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+            ></div>
+          </div>
+
+          <!-- CARD 2 -->
+
+          <div class="relative rounded-[18px] overflow-hidden group">
+            <img
+              src="./assets/podstream2.png"
+              class="w-full h-[420px] sm:h-[520px] lg:h-[625px] object-cover"
+            />
+
+            <button
+              class="absolute top-[18px] right-[18px] w-[36px] h-[36px] bg-white rounded-[6px] flex items-center justify-center shadow-sm hover:scale-105 transition"
+            >
+              <img src="./assets/plus1.png" class="w-[14px]" />
+            </button>
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-black px-[24px] py-[22px] flex flex-col justify-between h-[170px] sm:h-[206px]"
+            >
+              <div>
+                <p class="text-[13px] text-[#CECECE]">Episode 2 ~ Technology</p>
+
+                <h3 class="text-[18px] font-semibold text-white mt-[4px]">
+                  Philosophy
+                </h3>
+              </div>
+
+              <div class="flex items-center justify-between mt-[14px]">
+                <button class="flex items-center gap-[6px]">
+                  <img src="./assets/play.png" class="w-[22px]" />
+
+                  <span class="text-[14px] text-white"> Play </span>
+                </button>
+
+                <button class="flex items-center gap-[6px]">
+                  <span class="text-[14px] text-white"> Share </span>
+
+                  <img src="./assets/share.png" class="w-[22px]" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+            ></div>
+          </div>
+
+          <!-- CARD 3 -->
+
+          <div class="relative rounded-[18px] overflow-hidden group">
+            <img
+              src="./assets/podstram3.png"
+              class="w-full h-[420px] sm:h-[520px] lg:h-[625px] object-cover"
+            />
+
+            <button
+              class="absolute top-[18px] right-[18px] w-[36px] h-[36px] bg-black rounded-[6px] flex items-center justify-center shadow-sm hover:scale-105 transition"
+            >
+              <img src="./assets/plus1.png" class="w-[14px] invert" />
+            </button>
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-black px-[24px] py-[22px] flex flex-col justify-between h-[170px] sm:h-[206px]"
+            >
+              <div>
+                <p class="text-[13px] text-[#CECECE]">Episode 2 ~ Technology</p>
+
+                <h3 class="text-[18px] font-semibold text-white mt-[4px]">
+                  Health
+                </h3>
+              </div>
+
+              <div class="flex items-center justify-between mt-[14px]">
+                <button class="flex items-center gap-[6px]">
+                  <img src="./assets/play.png" class="w-[22px]" />
+
+                  <span class="text-[14px] text-white"> Play </span>
+                </button>
+
+                <button class="flex items-center gap-[6px]">
+                  <span class="text-[14px] text-white"> Share </span>
+
+                  <img src="./assets/share.png" class="w-[22px]" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="bg-black text-white pt-[120px] pb-[60px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- ROW 1 -->
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-[32px] items-start">
+          <!-- LOGO -->
+
+          <div>
+            <h2 class="text-[20px] font-semibold">PodStream</h2>
+          </div>
+
+          <!-- TAGLINE -->
+
+          <div class="lg:col-span-3">
+            <p
+              class="text-[22px] sm:text-[24px] lg:text-[28px] leading-[34px] lg:leading-[40px] font-medium max-w-[720px]"
+            >
+              We collaborate with ambitious brands and people, let’s build
+              something
+            </p>
+          </div>
+        </div>
+
+        <!-- ROW 2 -->
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[48px] lg:gap-[64px] mt-[60px] lg:mt-[80px]"
+        >
+          <!-- CONTACT -->
+
+          <div>
+            <p class="text-[#8D8D8D] text-[14px] mb-[12px]">
+              Start a conversation
+            </p>
+
+            <p class="text-[16px]">podcast@ex.com</p>
+
+            <p class="text-[16px] mt-[6px]">+5 548 548 6244</p>
+          </div>
+
+          <!-- LOCATION -->
+
+          <div>
+            <p class="text-[#8D8D8D] text-[14px] mb-[12px]">Find us here</p>
+
+            <p class="text-[16px]">Kolkata, Delhi, Mumbai</p>
+
+            <p class="text-[16px] mt-[6px]">India</p>
+          </div>
+
+          <!-- SOCIAL -->
+
+          <div>
+            <p class="text-[#8D8D8D] text-[14px] mb-[12px]">Follow us on</p>
+
+            <div class="flex gap-[24px] sm:justify-start justify-start">
+              <a href="#" class="hover:text-gray-300 transition">FB</a>
+              <a href="#" class="hover:text-gray-300 transition">IG</a>
+              <a href="#" class="hover:text-gray-300 transition">IN</a>
+              <a href="#" class="hover:text-gray-300 transition">TW</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIVIDER -->
+
+        <hr class="border-[#1F1F1F] my-[48px] lg:my-[64px]" />
+
+        <!-- ROW 3 -->
+
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-[13px] text-[#8D8D8D] gap-[12px]"
+        >
+          <a href="#" class="hover:text-white transition">
+            Terms and Conditions
+          </a>
+
+          <a href="#" class="hover:text-white transition"> Privacy Policy </a>
+
+          <p>2026 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>

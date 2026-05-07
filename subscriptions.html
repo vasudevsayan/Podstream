@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PodStream</title>
+
+    <!-- Tailwind CLI Output CSS -->
+    <link rel="stylesheet" href="./output/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+  </head>
+
+  <body class="bg-[#F5F5F5] font-sans">
+    <!-- ================= NAVBAR START ================= -->
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-lg">
+      <div class="max-w-[1320px] mx-auto px-6 py-6">
+        <nav class="flex items-center justify-between relative">
+          <!-- LOGO -->
+
+          <a href="categories.html" class="text-2xl font-semibold text-black">
+            PodStream
+          </a>
+
+          <!-- NAVIGATION LINKS -->
+
+          <ul
+            class="hidden lg:flex items-center gap-10 text-gray-600 font-medium"
+          >
+            <li>
+              <a href="index.html" class="hover:text-black"> Home </a>
+            </li>
+
+            <li>
+              <a href="categories.html" class="hover:text-black"> Categories</a>
+            </li>
+
+            <li>
+              <a
+                href="subscriptions.html"
+                class="text-black border-b-2 border-black pb-1"
+              >
+                Subscriptions
+              </a>
+            </li>
+
+            <li>
+              <a href="library.html" class="hover:text-black"> Library </a>
+            </li>
+
+            <li>
+              <a href="profile.html" class="hover:text-black"> Profile </a>
+            </li>
+          </ul>
+
+          <!-- RIGHT SIDE ICONS -->
+
+          <div class="hidden lg:flex items-center gap-6">
+            <div class="relative">
+              <!-- SEARCH ICON -->
+
+              <button id="searchToggle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+
+              <!-- SEARCH INPUT PANEL -->
+
+              <div
+                id="searchBox"
+                class="absolute right-0 top-[48px] w-[0px] overflow-hidden opacity-0 transition-all duration-300"
+              >
+                <input
+                  type="text"
+                  placeholder="Search podcasts..."
+                  class="w-[260px] px-4 py-2 rounded-full border border-gray-200 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)] outline-none"
+                />
+              </div>
+            </div>
+            <!-- SUBSCRIBE BUTTON -->
+
+            <a
+              href="subscriptions.html"
+              class="bg-black text-white px-6 py-2 rounded-full"
+            >
+              Subscribe now
+            </a>
+          </div>
+
+          <!-- MOBILE MENU ICON -->
+
+          <button
+            id="psMenuToggle"
+            class="lg:hidden flex flex-col justify-center items-center w-8 h-8 relative"
+          >
+            <span
+              class="ps-menu-line absolute w-6 h-[2px] bg-black transition duration-300 -translate-y-2"
+            ></span>
+
+            <span
+              class="ps-menu-line absolute w-6 h-[2px] bg-black transition duration-300"
+            ></span>
+
+            <span
+              class="ps-menu-line absolute w-6 h-[2px] bg-black transition duration-300 translate-y-2"
+            ></span>
+          </button>
+        </nav>
+
+        <!-- MOBILE MENU PANEL -->
+
+        <div
+          id="psMobileMenu"
+          class="lg:hidden absolute top-full left-0 w-full bg-white shadow-md opacity-0 pointer-events-none -translate-y-2 transition duration-300"
+        >
+          <div class="flex flex-col px-6 py-6 gap-4 text-gray-700">
+            <!-- MOBILE SEARCH -->
+
+            <div>
+              <button
+                id="mobileSearchToggle"
+                class="flex items-center gap-2 text-black"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+
+                Search
+              </button>
+
+              <div
+                id="mobileSearchBox"
+                class="mt-3 max-h-0 opacity-0 overflow-hidden transition-all duration-300"
+              >
+                <input
+                  type="text"
+                  placeholder="Search podcasts..."
+                  class="w-full px-4 py-2 rounded-full border border-gray-200 bg-white shadow-md outline-none"
+                />
+              </div>
+            </div>
+            <a href="index.html">Home</a>
+
+            <a href="categories.html">Categories</a>
+
+            <a href="subscriptions.html">Subscriptions</a>
+
+            <a href="library.html">Library</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a
+              href="subscriptions.html"
+              class="mt-2 bg-black text-white px-5 py-2 rounded-full w-fit"
+            >
+              Subscribe now
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= SUBSCRIPTIONS START ================= -->
+
+    <section
+      class="relative bg-cover bg-right bg-no-repeat min-h-[480px] sm:min-h-[560px] lg:min-h-[620px] flex items-center pt-[80px] sm:pt-[100px]"
+      style="background-image: url(&quot;./assets/3banner.png&quot;)"
+    >
+      <!-- CONTENT CONTAINER -->
+
+      <div class="relative max-w-[1320px] mx-auto px-6 w-full">
+        <div class="max-w-[650px]">
+          <!-- TITLE -->
+
+          <h1
+            class="text-[34px] sm:text-[48px] lg:text-[64px] font-semibold leading-tight text-[#1A1A1A]"
+          >
+            Invest in Better
+            <br />
+            Listening
+          </h1>
+
+          <!-- DESCRIPTION -->
+
+          <p
+            class="text-black mt-5 sm:mt-6 max-w-[480px] text-[14px] sm:text-[16px] leading-[24px]"
+          >
+            From free to premium — find the plan that fits your lifestyle and
+            never miss an episode.
+          </p>
+
+          <!-- BUTTON -->
+
+          <div class="mt-7 sm:mt-8">
+            <a
+              href="#pricing"
+              class="inline-flex items-center justify-center bg-black text-white px-7 sm:px-8 py-3 rounded-full transition duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              Subscribe now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SUBSCRIPTION PLANS START ================= -->
+
+    <section class="bg-[#F5F5F5] py-[80px] lg:py-[120px]" id="pricing">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- HEADER -->
+
+        <div class="mb-[50px] lg:mb-[64px] text-center lg:text-left">
+          <h2 class="text-[28px] lg:text-[32px] font-semibold text-black">
+            Subscription Plans
+          </h2>
+
+          <p class="text-[#8D8D8D] mt-2 text-[14px]">Pricing</p>
+        </div>
+
+        <!-- GRID -->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <!-- CARD 1 -->
+
+          <div
+            class="group bg-white hover:bg-[#FAFAFA] rounded-[18px] p-6 lg:p-[40px] transition duration-300 hover:-translate-y-[10px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+          >
+            <!-- TITLE -->
+
+            <h3 class="text-[22px] font-medium text-black">Individual Plan</h3>
+
+            <!-- DESC -->
+
+            <p
+              class="text-[#8D8D8D] group-hover:text-black text-[14px] leading-[24px] mt-3 transition duration-300"
+            >
+              Designed for solo listeners who want a personal and uninterrupted
+              experience.
+            </p>
+
+            <hr class="my-7 border-[#E5E5E5]" />
+
+            <!-- PRICE -->
+
+            <p class="text-[24px] font-medium text-black">
+              $9.99 USD
+
+              <span class="text-[#8D8D8D] group-hover:text-black text-[14px]">
+                /month
+              </span>
+            </p>
+
+            <!-- BUTTON -->
+
+            <button
+              class="mt-6 w-full h-[48px] bg-black text-white rounded-full transition duration-300 hover:opacity-90"
+            >
+              Subscribe now
+            </button>
+
+            <!-- FEATURES -->
+
+            <ul
+              class="mt-9 space-y-[18px] text-[14px] text-[#8D8D8D] group-hover:text-black transition duration-300"
+            >
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Unlimited episode access.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                High-quality audio streaming.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Offline downloads (10 episodes).
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Ad-free listening.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Exclusive content.
+              </li>
+            </ul>
+          </div>
+
+          <!-- FEATURED CARD -->
+
+          <div
+            class="group bg-[#FAFAFA] rounded-[18px] p-6 lg:p-[40px] lg:scale-[1.03] shadow-[0_8px_24px_rgba(0,0,0,0.05)] transition duration-300 hover:-translate-y-[10px] hover:shadow-[0_25px_50px_rgba(0,0,0,0.08)]"
+          >
+            <h3 class="text-[22px] font-medium text-black">Premium Plan</h3>
+
+            <p
+              class="text-[#8D8D8D] group-hover:text-black text-[14px] leading-[24px] mt-3 transition duration-300"
+            >
+              Designed for solo listeners who want a personal and uninterrupted
+              experience.
+            </p>
+
+            <hr class="my-7 border-[#E5E5E5]" />
+
+            <p class="text-[24px] font-medium text-black">
+              $19.99 USD
+
+              <span class="text-[#8D8D8D] group-hover:text-black text-[14px]">
+                /month
+              </span>
+            </p>
+
+            <button
+              class="mt-6 w-full h-[48px] bg-black text-white rounded-full transition duration-300 hover:opacity-90"
+            >
+              Subscribe now
+            </button>
+
+            <ul
+              class="mt-9 space-y-[18px] text-[14px] text-[#8D8D8D] group-hover:text-black transition duration-300"
+            >
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Unlimited episode access.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                High-quality audio streaming.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Offline downloads (10 episodes).
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Ad-free listening.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Exclusive content.
+              </li>
+            </ul>
+          </div>
+
+          <!-- CARD 3 -->
+
+          <div
+            class="group bg-white hover:bg-[#FAFAFA] rounded-[18px] p-6 lg:p-[40px] transition duration-300 hover:-translate-y-[10px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+          >
+            <h3 class="text-[22px] font-medium text-black">Custom Plan</h3>
+
+            <p
+              class="text-[#8D8D8D] group-hover:text-black text-[14px] leading-[24px] mt-3 transition duration-300"
+            >
+              Designed for solo listeners who want a personal and uninterrupted
+              experience.
+            </p>
+
+            <hr class="my-7 border-[#E5E5E5]" />
+
+            <p class="text-[24px] font-medium text-black">
+              $59.99 USD
+
+              <span class="text-[#8D8D8D] group-hover:text-black text-[14px]">
+                /month
+              </span>
+            </p>
+
+            <button
+              class="mt-6 w-full h-[48px] bg-black text-white rounded-full transition duration-300 hover:opacity-90"
+            >
+              Subscribe now
+            </button>
+
+            <ul
+              class="mt-9 space-y-[18px] text-[14px] text-[#8D8D8D] group-hover:text-black transition duration-300"
+            >
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Unlimited episode access.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                High-quality audio streaming.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Offline downloads (10 episodes).
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Ad-free listening.
+              </li>
+
+              <li class="flex items-start gap-[10px]">
+                <img
+                  src="./assets/circle-check.png"
+                  class="w-[18px] h-[18px] mt-[2px]"
+                />
+                Exclusive content.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================= TESTIMONIAL SECTION START ================= -->
+
+    <section class="bg-[#F5F5F5] py-[80px] lg:py-[120px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- HEADER ROW -->
+
+        <div
+          class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 mb-[40px] lg:mb-[60px]"
+        >
+          <!-- TITLE -->
+
+          <h2
+            class="text-[28px] sm:text-[30px] lg:text-[32px] font-semibold text-[#1A1A1A] leading-tight"
+          >
+            What Our Happy Client Say
+          </h2>
+
+          <!-- RATING BADGE -->
+
+          <div
+            class="flex items-center gap-3 bg-white px-4 py-3 rounded-full shadow-md w-fit"
+          >
+            <!-- AVATARS -->
+
+            <div class="flex -space-x-3">
+              <img
+                src="./assets/client1.png"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-white"
+              />
+
+              <img
+                src="./assets/client2.png"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-white"
+              />
+
+              <img
+                src="./assets/client3.png"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-white"
+              />
+
+              <img
+                src="./assets/client4.png"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-white"
+              />
+            </div>
+
+            <!-- TEXT -->
+
+            <p
+              class="text-[13px] sm:text-[14px] text-gray-500 whitespace-nowrap"
+            >
+              5.4 rating for all clients
+            </p>
+          </div>
+        </div>
+
+        <!-- CONTENT GRID -->
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-[40px] lg:gap-[80px] items-center"
+        >
+          <!-- LEFT CONTENT -->
+
+          <div
+            class="max-w-[760px] flex flex-col gap-[24px] order-2 lg:order-1"
+          >
+            <!-- NAME -->
+
+            <div>
+              <h4 class="text-[16px] font-semibold text-[#1A1A1A]">
+                Michael P
+              </h4>
+
+              <p class="text-[#8D8D8D] text-[14px] mt-[2px]">Business Leader</p>
+            </div>
+
+            <!-- STARS -->
+
+            <div class="flex gap-[6px]">
+              <img src="./assets/star.png" class="w-[15px] sm:w-[16px]" />
+              <img src="./assets/star.png" class="w-[15px] sm:w-[16px]" />
+              <img src="./assets/star.png" class="w-[15px] sm:w-[16px]" />
+              <img src="./assets/star.png" class="w-[15px] sm:w-[16px]" />
+              <img src="./assets/star.png" class="w-[15px] sm:w-[16px]" />
+            </div>
+
+            <!-- PARAGRAPH -->
+
+            <p
+              class="text-[#606060] text-[14px] sm:text-[15px] leading-[24px] sm:leading-[28px] max-w-[520px]"
+            >
+              Listening to these podcasts has completely changed the way I view
+              innovation and storytelling. The depth of knowledge and the
+              variety of topics is simply incredible!
+            </p>
+
+            <!-- BUTTONS -->
+
+            <div class="flex gap-[12px]">
+              <!-- LEFT -->
+
+              <button
+                class="group w-[42px] h-[42px] border border-gray-300 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-black"
+              >
+                <img
+                  src="./assets/arrow-left.png"
+                  class="w-[14px] transition-transform duration-300 group-hover:-translate-x-1 group-hover:invert"
+                />
+              </button>
+
+              <!-- RIGHT -->
+
+              <button
+                class="group w-[42px] h-[42px] border border-gray-300 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-black"
+              >
+                <img
+                  src="./assets/arrow-right.png"
+                  class="w-[14px] transition-transform duration-300 group-hover:translate-x-1 group-hover:invert"
+                />
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT IMAGE -->
+
+          <div class="flex justify-center lg:justify-end order-1 lg:order-2">
+            <img
+              src="./assets/client.png"
+              class="rounded-[18px] w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[536px] transition duration-500 hover:scale-[1.02]"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ SECTION START ================= -->
+
+    <section class="bg-[#F5F5F5] pb-[80px] lg:pb-[120px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- GRID -->
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-[1.2fr_.8fr] gap-[50px] lg:gap-[60px] items-start"
+        >
+          <!-- LEFT CONTENT -->
+
+          <div>
+            <!-- TITLE -->
+
+            <h2
+              class="text-[28px] sm:text-[30px] lg:text-[32px] font-semibold text-[#1A1A1A] mb-[32px] lg:mb-[36px]"
+            >
+              Have any Questions?
+            </h2>
+
+            <!-- FAQ ITEM 1 -->
+
+            <div class="faq-item border-b border-[#D9D9D9] pb-[18px] mb-[18px]">
+              <!-- BUTTON -->
+
+              <button
+                class="faq-toggle flex justify-between items-center gap-5 w-full text-left"
+              >
+                <span
+                  class="text-[15px] sm:text-[16px] font-medium text-[#1A1A1A] leading-[26px]"
+                >
+                  How can I listen to the podcast?
+                </span>
+
+                <span
+                  class="faq-icon text-[22px] transition duration-300 shrink-0"
+                >
+                  +
+                </span>
+              </button>
+
+              <!-- CONTENT -->
+
+              <div
+                class="faq-content max-h-[0px] overflow-hidden transition-all duration-300"
+              >
+                <p
+                  class="text-[#606060] mt-[12px] text-[14px] sm:text-[15px] leading-[26px] max-w-[520px]"
+                >
+                  You can listen to our podcast directly on our website, through
+                  your favorite streaming platforms like Spotify or Apple
+                  Podcasts, or by downloading episodes for offline access.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ ITEM 2 -->
+
+            <div class="faq-item border-b border-[#D9D9D9] pb-[18px] mb-[18px]">
+              <button
+                class="faq-toggle flex justify-between items-center gap-5 w-full text-left"
+              >
+                <span
+                  class="text-[15px] sm:text-[16px] font-medium text-[#1A1A1A] leading-[26px]"
+                >
+                  Can I download episodes for offline listening?
+                </span>
+
+                <span
+                  class="faq-icon text-[22px] transition duration-300 shrink-0"
+                >
+                  +
+                </span>
+              </button>
+
+              <div
+                class="faq-content max-h-[0px] overflow-hidden transition-all duration-300"
+              >
+                <p
+                  class="text-[#606060] mt-[12px] text-[14px] sm:text-[15px] leading-[26px] max-w-[520px]"
+                >
+                  Yes, premium users can download selected episodes and listen
+                  anytime without internet connection.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ ITEM 3 -->
+
+            <div class="faq-item border-b border-[#D9D9D9] pb-[18px]">
+              <button
+                class="faq-toggle flex justify-between items-center gap-5 w-full text-left"
+              >
+                <span
+                  class="text-[15px] sm:text-[16px] font-medium text-[#1A1A1A] leading-[26px]"
+                >
+                  Is there a premium subscription available?
+                </span>
+
+                <span
+                  class="faq-icon text-[22px] transition duration-300 shrink-0"
+                >
+                  +
+                </span>
+              </button>
+
+              <div
+                class="faq-content max-h-[0px] overflow-hidden transition-all duration-300"
+              >
+                <p
+                  class="text-[#606060] mt-[12px] text-[14px] sm:text-[15px] leading-[26px] max-w-[520px]"
+                >
+                  Yes, our premium subscription gives you ad-free listening,
+                  bonus content, and early access to episodes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT IMAGE -->
+
+          <div class="flex justify-center lg:justify-end">
+            <img
+              src="./assets/Faq.png"
+              class="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[480px] xl:max-w-[534px] object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="bg-black text-white pt-[120px] pb-[60px]">
+      <div class="max-w-[1320px] mx-auto px-6">
+        <!-- ROW 1 -->
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-[32px] items-start">
+          <!-- LOGO -->
+
+          <div>
+            <h2 class="text-[20px] font-semibold">PodStream</h2>
+          </div>
+
+          <!-- TAGLINE -->
+
+          <div class="lg:col-span-3">
+            <p
+              class="text-[22px] sm:text-[24px] lg:text-[28px] leading-[34px] lg:leading-[40px] font-medium max-w-[720px]"
+            >
+              We collaborate with ambitious brands and people, let’s build
+              something
+            </p>
+          </div>
+        </div>
+
+        <!-- ROW 2 -->
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[48px] lg:gap-[64px] mt-[60px] lg:mt-[80px]"
+        >
+          <!-- CONTACT -->
+
+          <div>
+            <p class="text-[#8D8D8D] text-[14px] mb-[12px]">
+              Start a conversation
+            </p>
+
+            <p class="text-[16px]">podcast@ex.com</p>
+
+            <p class="text-[16px] mt-[6px]">+5 548 548 6244</p>
+          </div>
+
+          <!-- LOCATION -->
+
+          <div>
+            <p class="text-[#8D8D8D] text-[14px] mb-[12px]">Find us here</p>
+
+            <p class="text-[16px]">Kolkata, Delhi, Mumbai</p>
+
+            <p class="text-[16px] mt-[6px]">India</p>
+          </div>
+
+          <!-- SOCIAL -->
+
+          <div>
+            <p class="text-[#8D8D8D] text-[14px] mb-[12px]">Follow us on</p>
+
+            <div class="flex gap-[24px] sm:justify-start justify-start">
+              <a href="#" class="hover:text-gray-300 transition">FB</a>
+              <a href="#" class="hover:text-gray-300 transition">IG</a>
+              <a href="#" class="hover:text-gray-300 transition">IN</a>
+              <a href="#" class="hover:text-gray-300 transition">TW</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIVIDER -->
+
+        <hr class="border-[#1F1F1F] my-[48px] lg:my-[64px]" />
+
+        <!-- ROW 3 -->
+
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-[13px] text-[#8D8D8D] gap-[12px]"
+        >
+          <a href="#" class="hover:text-white transition">
+            Terms and Conditions
+          </a>
+
+          <a href="#" class="hover:text-white transition"> Privacy Policy </a>
+
+          <p>2026 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>
