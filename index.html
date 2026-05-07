@@ -30,7 +30,6 @@
     <header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-lg">
       <div class="max-w-[1320px] mx-auto px-6 py-6">
         <nav class="flex items-center justify-between relative">
-
           <a href="index.html" class="text-2xl font-semibold text-black">
             PodStream
           </a>
@@ -200,37 +199,49 @@
     <!-- ================= BANNER START ================= -->
 
     <section
-      class="relative bg-no-repeat bg-cover bg-right min-h-[520px] sm:min-h-[600px] lg:min-h-[720px] flex items-center pt-[80px] sm:pt-[100px]"
-      style="background-image: url(&quot;./assets/banner.png&quot;)"
+      class="relative bg-no-repeat bg-cover bg-center lg:bg-right min-h-[580px] sm:min-h-[680px] lg:min-h-[760px] flex items-center pt-[90px] sm:pt-[110px] lg:pt-[120px] pb-[60px]"
+      style="background-image: url('./assets/banner.png')"
     >
+      <!-- OVERLAY -->
+
+      <div class="absolute inset-0 bg-white/10 lg:bg-transparent"></div>
+
       <!-- CONTENT -->
 
-      <div class="max-w-[1320px] mx-auto px-6 w-full">
-        <div class="max-w-[520px]">
+      <div
+        class="relative z-10 max-w-[1320px] mx-auto px-6 sm:px-8 lg:px-6 w-full"
+      >
+        <div class="max-w-full sm:max-w-[520px] text-center sm:text-left">
           <!-- TITLE -->
 
           <h1
-            class="text-[32px] sm:text-[42px] lg:text-[64px] font-semibold leading-tight text-[#1A1A1A]"
+            class="text-[34px] sm:text-[48px] lg:text-[64px] font-semibold leading-[42px] sm:leading-[56px] lg:leading-[78px] text-[#1A1A1A]"
           >
             Listen Anytime,
             <br />
             Anywhere.
           </h1>
 
-          <!-- DESCRIPTION-->
+          <!-- DESCRIPTION -->
 
-          <p class="text-black mt-5 sm:mt-6 text-[14px] sm:text-[16px]">
+          <p
+            class="text-black mt-5 sm:mt-6 text-[14px] sm:text-[16px] leading-[24px] max-w-[480px] mx-auto sm:mx-0"
+          >
             Discover podcasts that inspire, educate, and entertain.
           </p>
 
           <!-- BUTTONS -->
 
-          <div class="flex flex-col sm:flex-row gap-4 mt-6 sm:mt-8">
+          <div
+            class="flex flex-col sm:flex-row items-center sm:items-start gap-4 mt-7 sm:mt-8"
+          >
             <!-- START BUTTON -->
 
             <button
-              class="group bg-black text-white px-6 sm:px-7 py-3 rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              class="group w-full sm:w-auto bg-black text-white px-7 py-3.5 rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
+              <!-- ICON -->
+
               <span
                 class="transition-transform duration-300 group-hover:translate-x-1"
               >
@@ -247,8 +258,10 @@
             <!-- PREMIUM BUTTON -->
 
             <button
-              class="group border border-gray-400 px-6 sm:px-7 py-3 rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:bg-black hover:text-white hover:border-black"
+              class="group w-full sm:w-auto border border-gray-400 px-7 py-3.5 rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:bg-black hover:text-white hover:border-black"
             >
+              <!-- ICON -->
+
               <span
                 class="transition-transform duration-300 group-hover:rotate-12"
               >
@@ -261,6 +274,7 @@
                 >
                   <path
                     d="M20.627 11.002C20.6292 11.284 20.5435 11.5596 20.3817 11.7907C20.22 12.0217 19.9903 12.1966 19.7246 12.2911L14.2728 14.2736L12.2911 19.7246C12.1934 19.9878 12.0175 20.2147 11.7871 20.375C11.5566 20.5353 11.2827 20.6212 11.002 20.6212C10.7213 20.6212 10.4473 20.5353 10.2169 20.375C9.98647 20.2147 9.8106 19.9878 9.71293 19.7246L7.73121 14.2728L2.27933 12.2911C2.01619 12.1934 1.78924 12.0175 1.62898 11.7871C1.46871 11.5566 1.38281 11.2827 1.38281 11.002C1.38281 10.7213 1.46871 10.4473 1.62898 10.2169C1.78924 9.98647 2.01619 9.8106 2.27933 9.71293L7.73121 7.73121L9.71293 2.27933C9.8106 2.01619 9.98647 1.78924 10.2169 1.62898C10.4473 1.46871 10.7213 1.38281 11.002 1.38281C11.2827 1.38281 11.5566 1.46871 11.7871 1.62898C12.0175 1.78924 12.1934 2.01619 12.2911 2.27933L14.2736 7.73121L19.7246 9.71293C19.9903 9.80739 20.22 9.98229 20.3817 10.2133C20.5435 10.4443 20.6292 10.72 20.627 11.002Z"
+                    fill="currentColor"
                   />
                 </svg>
               </span>
